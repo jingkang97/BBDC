@@ -49,7 +49,7 @@ const Simulatorbooking = () => {
   return (
       <div style={{padding:'20px'}}>
           <div style={{marginBottom:'20px', display:'flex', flexDirection:'row', }}>
-                <h1>Traffic Police Simulator Booking</h1>
+                <h1>Driving Simulator Booking</h1>
             </div>
         <div className="site-calendar-demo-card" style={{display:'flex', flexDirection:'row'}}>
             <div style={{width:'100%'}}>
