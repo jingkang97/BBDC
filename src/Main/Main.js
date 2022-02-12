@@ -56,8 +56,8 @@ export default function Main() {
             <Menu
             onClick={handleClick}
             style={{ width: 256, height:'100vh', background:'#FAFAFA'}}
-            defaultSelectedKeys={['home']}
-            defaultOpenKeys={['home']}
+            // defaultSelectedKeys={['home']}
+            // defaultOpenKeys={['home']}
             mode="inline"
             >
                 <Menu.Item onClick={()=>{navigation('/home')}} key="home" icon={<HomeOutlined />}>Home</Menu.Item>
