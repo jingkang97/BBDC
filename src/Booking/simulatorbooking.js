@@ -24,7 +24,7 @@ const Simulatorbooking = () => {
 
     let blockDate = ['2022-02-22', '2022-02-25']
     const { CheckableTag } = Tag;
-    const tagsData = ['8.00AM - 9.00AM', '9.00AM - 10.00AM', '10.00AM - 11.00AM', '11.00AM-12.00PM'];
+    const tagsData = ['8.00AM - 9.00AM', '9.00AM - 10.00AM', '10.00AM - 11.00AM', '11.00AM - 12.00PM'];
     const [selectedDate, setSelectedDate] = useState(null)
     const [selectedTags, setSelectedTags] = useState([])
     const handleTagChange = (tag, checked) => {
@@ -42,7 +42,7 @@ const Simulatorbooking = () => {
         setSelectedTags([])
     }
     const buttonClick = (e) => {
-
+        
     }
     // function disable(current){
     // }
