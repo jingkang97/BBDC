@@ -1,7 +1,8 @@
 import { Calendar, Layout, Menu, Avatar, Dropdown } from 'antd';
 import { DownOutlined, HomeOutlined, CarOutlined, ReadOutlined, HistoryOutlined, MoreOutlined, CalendarOutlined, DesktopOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'; 
-import Booking from '../Booking/simulatorbooking';
+import DrivingSimulatorBooking from '../Booking/simulatorbooking';
+import TrafficPoliceSimulatorBooking from '../Booking/trafficpolicebooking';
 import Home from '../Home/home'
 import { useNavigate, useLocation, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -59,8 +60,8 @@ export default function Main() {
             >
                 <Menu.Item onClick={()=>{navigation('/home')}} key="home" icon={<HomeOutlined />}>Home</Menu.Item>
                 <SubMenu key="simulators" icon={<DesktopOutlined />} title="Simulators">
-                <Menu.Item key="driving simulator" onClick={()=>{navigation('/simulatorbookings')}}>Driving Simulator</Menu.Item>
-                <Menu.Item key="traffic police simulator">Traffic Police Simulator</Menu.Item>
+                <Menu.Item key="driving simulator" onClick={()=>{navigation('/drivingsimulatorbookings')}}>Driving Simulator</Menu.Item>
+                <Menu.Item key="traffic police simulator" onClick={()=>{navigation('/trafficpolicesimulatorbookings')}}>Traffic Police Simulator</Menu.Item>
                 </SubMenu>
                 <SubMenu key="practical" icon={<CarOutlined />} title="Practical">
                 <Menu.Item key="9">Option 9</Menu.Item>
@@ -81,7 +82,9 @@ export default function Main() {
                  <Routes>
                     <Route path="/home" element={<Home />}/>
                     <Route path="/" element={<Navigate replace to="/home"/>} />
-                    <Route path="/simulatorbookings" element={<Booking />} />
+                    <Route path="/drivingsimulatorbookings" element={<DrivingSimulatorBooking />} />
+                    <Route path="/trafficpolicesimulatorbookings" element={<TrafficPoliceSimulatorBooking />} />
+
                  </Routes>
                  
                 {/* <Booking /> */}

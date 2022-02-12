@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Calendar, Badge, Tag } from 'antd';
+import { Calendar, Badge } from 'antd';
 import moment from 'moment';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import styles from './booking.css'
@@ -8,23 +8,16 @@ function onPanelChange(value, mode) {
     console.log(value, mode);
   }
 
-const Simulatorbooking = () => {
+const TrafficBooking = () => {
     let blockDate = ['2022-02-22', '2022-02-25']
-    const { CheckableTag } = Tag;
-    const tagsData = ['8.00AM - 9.00AM', '9.00AM - 10.00AM', '10.00AM - 11.00AM', '11.00AM-12.00PM'];
     const [selectedDate, setSelectedDate] = useState(null)
-    const [selectedTags, setSelectedTags] = useState([])
-    const handleTagChange = (tag, checked) => {
-        const nextSelectedTags = checked ? [...selectedTags, tag] : selectedTags.filter(t => t !== tag);
-        setSelectedTags(nextSelectedTags)
-    }
     function disableDate(current){
         // return current && current < moment().startOf('day') || 
         // return current === moment('2022-02-22', 'YYYY-MM-DD')
         return current && current < moment().startOf('day') || blockDate.findIndex(date => date === moment(current).format('YYYY-MM-DD')) !== -1
     }
     const onSelect = (value) => {
-        setSelectedDate(moment(value).format('YYYY DD MMMM dddd').toString())
+        setSelectedDate(moment(value).toString())
         console.log(moment(value).toString())
     }
     // function disable(current){
@@ -32,7 +25,7 @@ const Simulatorbooking = () => {
   return (
       <div style={{padding:'20px'}}>
           <div style={{marginBottom:'20px', display:'flex', flexDirection:'row', }}>
-                <h1>Driving Simulator Booking</h1>
+                <h1>Traffic Police Simulator Booking</h1>
             </div>
         <div className="site-calendar-demo-card" style={{display:'flex', flexDirection:'row'}}>
             <div style={{width:'100%'}}>
@@ -41,19 +34,8 @@ const Simulatorbooking = () => {
             </div>
             <div style={{padding:'20px', width:'400px', height:'100%', background:''}}>
                 <h1>Available Time Slots</h1>
-                <h3 >{selectedDate ? selectedDate : 'Please select a date' }</h3>
-                {selectedDate ?  <div style={{display:'flex', flexDirection:'column'}}>
-                    {tagsData.map(tag=> (
-                        <CheckableTag key={tag} 
-                        style={{border:'solid 1px #1890FF', marginBottom:'10px', fontSize:'15px', padding:'20px'}}
-                        checked={selectedTags.indexOf(tag) > -1}
-                        onChange = {checked => handleTagChange(tag, checked)}
-                        >
-                            {tag}
-                        </CheckableTag>
-                    ))}
-                    
-                    </div>: null}
+                {selectedDate ? selectedDate : 'Please select a date' }
+                {selectedDate ? '10am': null}
             </div>
         </div>
       </div>
@@ -61,4 +43,4 @@ const Simulatorbooking = () => {
   )
 }
 
-export default Simulatorbooking
+export default TrafficBooking
