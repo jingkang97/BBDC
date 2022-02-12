@@ -26,7 +26,7 @@ export default function Main() {
         console.log('click ', e);
       };
     const navigation = useNavigate()
-
+      const location = useLocation()
   return (
     <div>
         <Header className="header">
@@ -51,6 +51,7 @@ export default function Main() {
                 </div>
             </div>
         </Header>
+        {console.log(location.pathname)}
         <Layout>
             <Sider style={{background:'#FAFAFA'}}>
             <Menu
@@ -58,24 +59,25 @@ export default function Main() {
             style={{ width: 256, height:'100vh', background:'#FAFAFA'}}
             // defaultSelectedKeys={['home']}
             // defaultOpenKeys={['home']}
+            selectedKeys={[location.pathname]}
             mode="inline"
             >
-                <Menu.Item onClick={()=>{navigation('/home')}} key="home" icon={<HomeOutlined />}>Home</Menu.Item>
+                <Menu.Item onClick={()=>{navigation('/home')}} key="/home" icon={<HomeOutlined />}>Home</Menu.Item>
                 <SubMenu key="simulators" icon={<DesktopOutlined />} title="Simulators">
-                <Menu.Item key="driving simulator" onClick={()=>{navigation('/drivingsimulatorbookings')}}>Driving Simulator</Menu.Item>
-                <Menu.Item key="traffic police simulator" onClick={()=>{navigation('/trafficpolicesimulatorbookings')}}>Traffic Police Simulator</Menu.Item>
+                <Menu.Item key="/drivingsimulatorbookings" onClick={()=>{navigation('/drivingsimulatorbookings')}}>Driving Simulator</Menu.Item>
+                <Menu.Item key="/trafficpolicesimulatorbookings" onClick={()=>{navigation('/trafficpolicesimulatorbookings')}}>Traffic Police Simulator</Menu.Item>
                 </SubMenu>
                 <SubMenu key="practical" icon={<CarOutlined />} title="Practical">
-                <Menu.Item key="9" onClick={()=>{navigation('/option9')}}>Option 9</Menu.Item>
+                <Menu.Item key="/option9" onClick={()=>{navigation('/option9')}}>Option 9</Menu.Item>
                 </SubMenu>
                 <SubMenu key="theory" icon={<ReadOutlined />} title="Theory">
-                <Menu.Item key="10" onClick={()=>{navigation('/option10')}}>Option 10</Menu.Item>
+                <Menu.Item key="/option10" onClick={()=>{navigation('/option10')}}>Option 10</Menu.Item>
                 </SubMenu>
-                <Menu.Item key="bookings" icon={<CalendarOutlined />} onClick={()=>{navigation('/bookings')}}>Bookings</Menu.Item>
-                <Menu.Item key="history" icon={<HistoryOutlined />} onClick={()=>{navigation('/history')}}>History</Menu.Item>
+                <Menu.Item key="/bookings" icon={<CalendarOutlined />} onClick={()=>{navigation('/bookings')}}>Bookings</Menu.Item>
+                <Menu.Item key="/history" icon={<HistoryOutlined />} onClick={()=>{navigation('/history')}}>History</Menu.Item>
                 <SubMenu key="sub4" icon={<MoreOutlined />} title="Others">
-                <Menu.Item key="11" onClick={()=>{navigation('/option11')}}>Option 11</Menu.Item>
-                <Menu.Item key="12" onClick={()=>{navigation('/option12')}}>Option 12</Menu.Item>
+                <Menu.Item key="/option11" onClick={()=>{navigation('/option11')}}>Option 11</Menu.Item>
+                <Menu.Item key="/option12" onClick={()=>{navigation('/option12')}}>Option 12</Menu.Item>
                 </SubMenu>
             </Menu>
             </Sider>
