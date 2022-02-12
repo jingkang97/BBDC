@@ -3,8 +3,10 @@ import { DownOutlined, HomeOutlined, CarOutlined, ReadOutlined, HistoryOutlined,
 import 'antd/dist/antd.css'; 
 import DrivingSimulatorBooking from '../Booking/simulatorbooking';
 import TrafficPoliceSimulatorBooking from '../Booking/trafficpolicebooking';
+import Bookings from '../Booking/bookings';
 import Home from '../Home/home'
 import { useNavigate, useLocation, Route, Routes, Navigate } from 'react-router-dom';
+import Dummy from '../Home/dummy';
 
 
 const { SubMenu } = Menu;
@@ -31,7 +33,7 @@ export default function Main() {
             <div style={{display:'flex', flexDirection:'row', alignItems:'center',  width:'100%', height:'100%', background:'', justifyContent:'space-between'}}>
                 <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
                     <img src="bbdcLogo.png" style={{height:'30px', width:'30px'}} />
-                    <div style={{color:'white', fontWeight:'bold', marginLeft:'10px'}}>Bukit Batok Driving Center Ltd</div>
+                    <div style={{color:'white', fontWeight:'bold', marginLeft:'10px'}}>Bukit Batok Driving Center</div>
                 </div>
                 <div style={{display:'flex', flexDisplay:'row', alignItems:'center', color:'white'}}>
                     <Avatar src="avatar.jpeg"/>
@@ -64,16 +66,16 @@ export default function Main() {
                 <Menu.Item key="traffic police simulator" onClick={()=>{navigation('/trafficpolicesimulatorbookings')}}>Traffic Police Simulator</Menu.Item>
                 </SubMenu>
                 <SubMenu key="practical" icon={<CarOutlined />} title="Practical">
-                <Menu.Item key="9">Option 9</Menu.Item>
+                <Menu.Item key="9" onClick={()=>{navigation('/option9')}}>Option 9</Menu.Item>
                 </SubMenu>
                 <SubMenu key="theory" icon={<ReadOutlined />} title="Theory">
-                <Menu.Item key="10">Option 10</Menu.Item>
+                <Menu.Item key="10" onClick={()=>{navigation('/option10')}}>Option 10</Menu.Item>
                 </SubMenu>
-                <Menu.Item key="bookings" icon={<CalendarOutlined />}>Bookings</Menu.Item>
-                <Menu.Item key="history" icon={<HistoryOutlined />}>History</Menu.Item>
+                <Menu.Item key="bookings" icon={<CalendarOutlined />} onClick={()=>{navigation('/bookings')}}>Bookings</Menu.Item>
+                <Menu.Item key="history" icon={<HistoryOutlined />} onClick={()=>{navigation('/history')}}>History</Menu.Item>
                 <SubMenu key="sub4" icon={<MoreOutlined />} title="Others">
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
+                <Menu.Item key="11" onClick={()=>{navigation('/option11')}}>Option 11</Menu.Item>
+                <Menu.Item key="12" onClick={()=>{navigation('/option12')}}>Option 12</Menu.Item>
                 </SubMenu>
             </Menu>
             </Sider>
@@ -84,6 +86,14 @@ export default function Main() {
                     <Route path="/" element={<Navigate replace to="/home"/>} />
                     <Route path="/drivingsimulatorbookings" element={<DrivingSimulatorBooking />} />
                     <Route path="/trafficpolicesimulatorbookings" element={<TrafficPoliceSimulatorBooking />} />
+                    <Route path="/bookings" element={<Bookings />} />
+                    
+                    <Route path="/history" element={<Dummy title={"History"}/>} />
+                    <Route path="/option9" element={<Dummy title={"Option 9"}/>} />
+                    <Route path="/option10" element={<Dummy title={"Option 10"}/>} />
+                    <Route path="/option11" element={<Dummy title={"Option 11"}/>} />
+                    <Route path="/option12" element={<Dummy title={"Option 12"}/>} />
+
 
                  </Routes>
                  

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Calendar, Badge, Tag } from 'antd';
+import { Calendar, Tag, Button, Modal } from 'antd';
 import moment from 'moment';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import styles from './booking.css'
@@ -9,6 +9,19 @@ function onPanelChange(value, mode) {
   }
 
 const Simulatorbooking = () => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = () => {
+        setIsModalVisible(true);
+      };
+    
+      const handleOk = () => {
+        setIsModalVisible(false);
+      };
+    
+      const handleCancel = () => {
+        setIsModalVisible(false);
+      };
+
     let blockDate = ['2022-02-22', '2022-02-25']
     const { CheckableTag } = Tag;
     const tagsData = ['8.00AM - 9.00AM', '9.00AM - 10.00AM', '10.00AM - 11.00AM', '11.00AM-12.00PM'];
@@ -26,13 +39,17 @@ const Simulatorbooking = () => {
     const onSelect = (value) => {
         setSelectedDate(moment(value).format('YYYY DD MMMM dddd').toString())
         console.log(moment(value).toString())
+        setSelectedTags([])
+    }
+    const buttonClick = (e) => {
+
     }
     // function disable(current){
     // }
   return (
       <div style={{padding:'20px'}}>
           <div style={{marginBottom:'20px', display:'flex', flexDirection:'row', }}>
-                <h1>Driving Simulator Booking</h1>
+                <h1>Traffic Police Simulator Booking</h1>
             </div>
         <div className="site-calendar-demo-card" style={{display:'flex', flexDirection:'row'}}>
             <div style={{width:'100%'}}>
@@ -56,6 +73,18 @@ const Simulatorbooking = () => {
                     </div>: null}
             </div>
         </div>
+        <div style={{display:'flex', width:'100%', marginTop: '20px'}}>
+            <Button type = "primary" size="large" onClick={showModal} disabled={!selectedTags.length}>Next</Button>
+        </div>
+        <Modal title="Confirmation" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <p>Your booking for:</p>
+        {selectedTags.map(session => (
+            <div style={{fontWeight:'bold'}}>
+                {session}
+            </div>
+        ))}
+        <div style={{marginTop:'10px'}}>on <span style={{fontWeight:'bold'}}>{selectedDate}</span> is confirmed!</div>        
+      </Modal>
       </div>
     
   )
